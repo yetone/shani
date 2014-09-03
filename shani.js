@@ -29,6 +29,6 @@
         }
         return eval(self.code);
       };
-    },
+    }
   };
 })(window);
