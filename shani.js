@@ -19,16 +19,14 @@
         exp = exp.replace(/for\s+([a-zA-Z_]+),\s*(\w+)\s+in\s+(\w+)/, function(_, k, v, lst) {
           return 'for (var ' + k + ' in ' + lst + ') { var ' + v + ' = ' + lst + '[' + k + ']; ';
         });
-        content = exp + content + end;
-        return content;
+        return exp + content + end;
       });
       tpl = tpl.replace(/\{%\s*end\s*%\}/g, function(_, a) {
         return ' } ';
       });
-      tpl = tpl.replace(/\{\{\s*(.*?)\s*\}\}/g, function(_, k) {
+      this.code = tpl.replace(/\{\{\s*(.*?)\s*\}\}/g, function(_, k) {
         return '\' + (' + k + ') + \'';
       });
-      this.code = tpl;
       return function(scope) {
         for (var i in scope) {
           this[i] = scope[i];
