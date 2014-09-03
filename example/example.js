@@ -13,6 +13,6 @@ window.onload = function() {
     }
   };
   var tpl = document.getElementById('tpl').innerHTML;
-  var render = shani.compile(tpl.trim().replace('\n', ''));
+  var render = shani.compile(tpl);
   document.getElementsByTagName('body')[0].innerHTML = render(data);
 };
