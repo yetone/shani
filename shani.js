@@ -12,7 +12,7 @@
         return sf + a + ' (' + b + ') { ';
       });
       tpl = tpl.replace(/\{%\s*(for\s+.*?)\s*%\}(.*?)(\{%\s*end\s*%\})/g, function(_, exp, content, end) {
-        exp = exp.replace(/for\s+([a-zA-Z_]+),\s*(\w+)\s+in\s+(\w+)/, function(_, k, v, lst) {
+        exp = exp.replace(/for\s+([a-zA-Z_][a-zA-Z0-9_]*),\s*([a-zA-Z_][a-zA-Z0-9_]*)\s+in\s+([a-zA-Z_][a-zA-Z0-9_]*)/, function(_, k, v, lst) {
           return 'for (var ' + k + ' in ' + lst + ') { var ' + v + ' = ' + lst + '[' + k + ']; ';
         });
         return exp + content + end;
