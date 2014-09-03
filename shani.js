@@ -11,7 +11,7 @@
         var sf = (a === 'if') ? '' : ' } ';
         return sf + a + ' (' + b + ') { ';
       });
-      tpl = tpl.replace(/\{%\s*for\s+([a-zA-Z_][a-zA-Z0-9_]*),\s*([a-zA-Z_][a-zA-Z0-9_]*)\s+in\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*%\}/, function(_, k, v, lst) {
+      tpl = tpl.replace(/\{%\s*for\s+([a-zA-Z_][a-zA-Z0-9_]*),\s*([a-zA-Z_][a-zA-Z0-9_]*)\s+in\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*%\}/g, function(_, k, v, lst) {
         return 'for (var ' + k + ' in ' + lst + ') { var ' + v + ' = ' + lst + '[' + k + ']; ';
       });
       tpl = tpl.replace(/\{%\s*else\s*%\}/g, ' } else { ');
