@@ -9,6 +9,9 @@
       });
       tpl = tpl.replace(/\{%\s*(if|else if)\s+(.*?)\s*%\}/g, function(_, a, b) {
         var sf = (a === 'if') ? '' : ' } ';
+        b = b.replace(/(.*?\s+)(and|or)(\s+.*?)/g, function(_, a, b, c) {
+          return a + (b === 'and' ? '&&' : '||') + c;
+        });
         return sf + a + ' (' + b + ') { ';
       });
       tpl = tpl.replace(/\{%\s*for\s+([a-zA-Z_][a-zA-Z0-9_]*),\s*([a-zA-Z_][a-zA-Z0-9_]*)\s+in\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*%\}/g, function(_, k, v, lst) {
