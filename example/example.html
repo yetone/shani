@@ -24,6 +24,11 @@
       <div>
         {{ say() }}
       </div>
+      <ul>
+        {% for k, v in dict %}
+        <li>{{ k }}: {{ v }}</li>
+        {% end %}
+      </ul>
     </script>
   </head>
   <body>

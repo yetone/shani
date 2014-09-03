@@ -10,6 +10,11 @@ window.onload = function() {
     ],
     say: function() {
       return 'It works!';
+    },
+    dict: {
+      a: 1,
+      b: 2,
+      3: 'c'
     }
   };
   var tpl = document.getElementById('tpl').innerHTML;
