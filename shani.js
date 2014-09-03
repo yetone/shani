@@ -23,7 +23,7 @@
         return '\' + (' + k + ') + \'';
       });
       return function(scope) {
-        return (new Function('with(this) {var __acc__ = "";' + self.code + ';return __acc__;}')).call(scope);
+        return (new Function('with(this) {var __acc__ = ""; ' + self.code + '; return __acc__;}')).call(scope);
       };
     }
   };
