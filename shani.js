@@ -1,12 +1,11 @@
 ;(function(window, undefined) {
   window.shani = {
-    acc: '',
     code: '',
     compile: function(tpl) {
       var self = this;
       tpl = tpl.replace(/(\n|\r)/g, '');
       tpl = tpl.replace(/(%\}|^)(.*?)(\{%|$)/g, function(_, a, b, c) {
-        return a + 'self.acc += \'' + b + '\'; ' + c;
+        return a + '__acc__ += \'' + b + '\'; ' + c;
       });
       tpl = tpl.replace(/\{%\s*(if|else if)\s+(.*?)\s*%\}/g, function(_, a, b) {
         var sf = (a === 'if') ? '' : ' } ';
@@ -24,10 +23,7 @@
         return '\' + (' + k + ') + \'';
       });
       return function(scope) {
-        for (var i in scope) {
-          this[i] = scope[i];
-        }
-        return eval(self.code);
+        return (new Function('with(this){var __acc__ = "";' + self.code + 'return __acc__;}')).call(scope);
       };
     }
   };
