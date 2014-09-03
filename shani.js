@@ -30,12 +30,10 @@
       });
       this.code = tpl;
       return function(scope) {
-        return (function(scope) {
-          for (var i in scope) {
-            this[i] = scope[i];
-          }
-          return eval(self.code);
-        }).call(this, scope);
+        for (var i in scope) {
+          this[i] = scope[i];
+        }
+        return eval(self.code);
       };
     },
   };
