@@ -3,7 +3,7 @@
     code: '',
     compile: function(tpl) {
       var self = this;
-      this.code = tpl.replace(/(\n|\r)/g, '')
+      self.code = tpl.replace(/(\n|\r)/g, '')
                      .replace(/(%\}|^)(.*?)(\{%|$)/g, function(_, a, b, c) {
                        return a + '__acc__ += \'' + b + '\'; ' + c;
                      })
